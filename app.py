@@ -19,9 +19,31 @@ def home():
   return render_template('index.html')
 
 
-@app.route('/films')
-def films():
-  return render_template('liste.html') 
+@app.route('/films', methods=['GET'])
+def get_films():
+    try:
+        cursor = my_db.cursor()
+
+        cursor.execute('SELECT id, title, release_year FROM films')
+        films = cursor.fetchall()
+
+        films_list = []
+        for film in films:
+            films_list.append({
+                'id': film[0],
+                'title': film[1],
+                'release_year': film[2]
+            })
+
+        cursor.close()
+        conn.close()
+
+        return jsonify(films_list)  # Retourne les films au format JSON
+
+    except Exception as e:
+        return str(e), 500  # En cas d'erreur, renvoyer une réponse d'erreur
+
+
 
 @app.route('/film/<film>')
 def film(film):
