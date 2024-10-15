@@ -11,7 +11,7 @@ def home():
 
 @app.route('/films')
 def films():
-  return "<b>liste de films</b>" 
+  return render_template('liste.html') 
 
 @app.route('/film/<film>')
 def film(film):
