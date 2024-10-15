@@ -1,0 +1,22 @@
+services:
+  backend:
+    image: bbm
+    build: ./
+    entrypoint: ["/usr/local/bin/flask"]
+    command: ["run", "--debug", "--host", "0.0.0.0"]
+      #    environment:
+      #      - FLASK_ENV=development
+    volumes:
+      - ./:/app/
+    ports:
+      - 5000:5000
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: pgpass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./postgres-docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
+
+volumes:
+  pgdata:
