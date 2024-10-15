@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import os
 
 import psycopg2
@@ -36,7 +36,6 @@ def get_films():
             })
 
         cursor.close()
-        conn.close()
 
         return jsonify(films_list)  # Retourne les films au format JSON
 
