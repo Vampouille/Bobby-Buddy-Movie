@@ -1,6 +1,16 @@
 from flask import Flask, render_template
 import os
 
+import psycopg2
+
+my_db = psycopg2.connect(
+    database="postgres",
+    host="postgres",
+    user="postgres",
+    password="pgpass",
+    port="5432",
+)
+
 app = Flask(__name__)
 
 @app.route('/')
