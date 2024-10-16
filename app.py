@@ -24,7 +24,7 @@ def get_films():
     try:
         cursor = my_db.cursor()
 
-        cursor.execute('SELECT id, title, release_year FROM films')
+        cursor.execute('SELECT id, title, release_year FROM films ORDER BY release_year ASC')
         films = cursor.fetchall()
 
         films_list = []
