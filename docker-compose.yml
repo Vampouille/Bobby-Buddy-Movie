@@ -2,14 +2,17 @@ services:
   backend:
     image: bbm
     build: ./
-    entrypoint: ["/usr/local/bin/flask"]
-    command: ["run", "--debug", "--host", "0.0.0.0"]
+    #entrypoint: ["/usr/local/bin/flask"]
+    entrypoint: ["python3"]
+    #command: ["run", "--debug", "--host", "0.0.0.0"]
+    command: ["-m", "debugpy", "--listen", "0.0.0.0:5679", "app.py"]
       #    environment:
       #      - FLASK_ENV=development
     volumes:
       - ./:/app/
     ports:
       - 5001:5000
+      - 5679:5679
   postgres:
     image: postgres:16
     environment:
@@ -17,6 +20,8 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./postgres-docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432  
 
 volumes:
   pgdata:

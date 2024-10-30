@@ -1,7 +1,9 @@
 from flask import Flask, render_template, jsonify
 import os
+from film import Film
 
 import psycopg2
+import psycopg2.extras
 
 my_db = psycopg2.connect(
     database="postgres",
@@ -22,22 +24,18 @@ def home():
 @app.route('/films', methods=['GET'])
 def get_films():
     try:
-        cursor = my_db.cursor()
+        cursor = my_db.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-        cursor.execute('SELECT id, title, release_year FROM films ORDER BY release_year ASC')
+        cursor.execute('SELECT * FROM films ORDER BY release_year ASC')
         films = cursor.fetchall()
 
-        films_list = []
-        for film in films:
-            films_list.append({
-                'id': film[0],
-                'title': film[1],
-                'release_year': film[2]
-            })
+        films_list = [Film(*f) for f in films]
+        #for f in films:
+            #films_list.append(Film(*f))
 
         cursor.close()
 
-        return jsonify(films_list)  # Retourne les films au format JSON
+        return render_template("films.html", films=films_list)  # Retourne les films au format JSON
 
     except Exception as e:
         return str(e), 500  # En cas d'erreur, renvoyer une réponse d'erreur

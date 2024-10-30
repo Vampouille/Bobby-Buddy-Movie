@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Release Year</th>
+    </tr>
+{% for film in films %}
+    <tr>
+        <td>{{ film.title }}<td>
+        <td>{{ film.release_year }}<td>    
+    </tr>
+{% endfor %}
+</table>
