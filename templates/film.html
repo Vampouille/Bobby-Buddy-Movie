@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='film.css') }}">
+</head>
+
+<body>
+    <div class="film-container">
+        <div class="film-image">
+            <img src="https://www.wall-art.de/out/pictures/generated/product/1/780_780_80/198202.jpg" alt="Description de l'image" width="500" height="750">
+        </div>
+        <div class="film-info">
+            <h2>{{ film.title }}</h2>
+            <p>Release Year: {{ film.release_year }}</p>
+            <p>Review : {% if film.review %}{{ film.review }}{% else %}<a href="{{ url_for('getReviewForm', id=film.id)}}">ajouter une critique</a>{% endif %}</p>
+            <p id="rating-value">Votre note : 0</p>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </div>
+</body>

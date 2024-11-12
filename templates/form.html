@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='formStyle.css') }}">
+    <title>Ajouter un film</title>
+</head>
+<body>
+    <h1>Ajouter un film</h1>
+    <form action="{{ url_for('addFilm') }}" method="POST">
+        <!-- Champ pour le titre du film -->
+        <label for="title">Titre :</label>
+        <input type="text" id="title" name="title" required>
+        <br><br>
+
+        <!-- Champ pour l'année de sortie -->
+        <label for="release_year">Année de sortie :</label>
+        <input type="number" id="release_year" name="release_year" min="1801" required>
+        <br><br>
+
+        <!-- Bouton pour soumettre le formulaire -->
+        <button type="submit">Ajouter le film</button>
+    </form>
+</body>
+</html>

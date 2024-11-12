@@ -1,0 +1,79 @@
+/* Conteneur principal */
+.film-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px;
+}
+
+/* Conteneur pour l'image */
+.film-image {
+    flex: 1;
+    padding-right: 20px;
+}
+
+/* Style pour l'image */
+.film-image img {
+    max-width: 100%;  /* S'adapte à la taille du conteneur */
+    height: auto;     /* Garde les proportions de l'image */
+}
+
+/* Conteneur pour le texte */
+.film-info {
+    flex: 2;
+    padding-left: 20px;
+}
+
+/* Style du titre */
+.film-info h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style du texte */
+.film-info p {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #555;
+}
+
+/* Conteneur des étoiles */
+.star-rating {
+  display: flex;
+  direction: row-reverse;
+  font-size: 3rem; /* Taille des étoiles */
+  cursor: pointer;
+}
+
+/* Style de base des étoiles */
+.star {
+  color: #ccc; /* Couleur par défaut des étoiles non sélectionnées */
+  transition: color 0.3s, transform 0.3s ease; /* Transition douce pour la couleur et la taille */
+}
+
+/* Effet de survol : agrandir les étoiles et changer leur couleur */
+.star:hover,
+.star:hover ~ .star {
+  color: #FFD700; /* Couleur or au survol */
+  transform: scale(1.2); /* Agrandissement des étoiles au survol */
+}
+
+/* Stars sélectionnées : appliquées lorsque l'utilisateur a cliqué */
+.star.selected {
+  color: #FFD700; /* Couleur or pour les étoiles sélectionnées */
+  transform: scale(1.2); /* Agrandir légèrement les étoiles sélectionnées */
+}
+
+/* Transitions pour rendre l'effet plus fluide */
+.star:hover {
+  transform: scale(1.2); /* Étoiles survolées s'agrandissent */
+  color: #FFD700; /* Changement de couleur des étoiles survolées */
+}
+
+/* Dégradé de couleur pour un effet visuel doux */
+.star.selected {
+  color: #FFD700; /* Couleur or pour les étoiles sélectionnées */
+}
+

@@ -27,8 +27,14 @@ body {
   display: block;
   position: relative;
   top: 100px;
-
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
+
+.cameraImage:hover {
+  transform: scale(1.1) rotate(10deg); /* Zoom de 10% et rotation de 10 degrés */
+  filter: brightness(1.2) contrast(1.1); /* Ajuste la luminosité et le contraste pour plus d'effet */
+}
+
 footer {
   background-color: black; /* Couleur de fond */
   color: white; /* Couleur du texte */

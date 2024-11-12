@@ -1,10 +1,13 @@
 CREATE TABLE films (
   id SERIAL PRIMARY KEY,
   title TEXT NOT NULL,
-  release_year INT NOT NULL CHECK (release_year > 1800)
+  release_year INT NOT NULL CHECK (release_year > 1800),
+  review TEXT NULL
 );
 
-INSERT INTO films (title, release_year) VALUES ('The Godfather', 1972);
+
+
+INSERT INTO films (title, release_year, review) VALUES ('The Godfather', 1972, 'un bon film');
 INSERT INTO films (title, release_year) VALUES ('Pulp Fiction', 1994);
 INSERT INTO films (title, release_year) VALUES ('Schindler''s List', 1993);
 INSERT INTO films (title, release_year) VALUES ('Inception', 2010);

@@ -1,12 +1,41 @@
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Release Year</th>
-    </tr>
-{% for film in films %}
-    <tr>
-        <td>{{ film.title }}<td>
-        <td>{{ film.release_year }}<td>    
-    </tr>
-{% endfor %}
-</table>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='filmsList.css') }}">
+</head>
+
+<body>
+    <!-- Formulaire de recherche -->
+    <form method="GET" action="{{ url_for('search_films') }}">
+        <input type="text" name="query" placeholder="Rechercher un film..." required>
+        <button type="submit">Rechercher</button>
+    </form>
+     <!-- Lien pour ajouter un film -->
+     <a href="{{ url_for('getForm') }}" class="add-film">Ajouter un film</a>
+
+    <!-- Table des films -->
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Release Year</th>
+            <th>Review</th>
+        </tr>
+        {% for film in films %}
+            <tr>
+                <td><a href="{{ url_for('film', id=film.id) }}">{{ film.title }}</a></td>
+                <td>{{ film.release_year }}</td>
+                <td>{{ film.review }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+   
+
+    <!-- Message de recherche -->
+    {% if query %}
+        <p>Résultats de la recherche pour : <strong>{{ query }}</strong></p>
+    {% endif %}
+</body>
+</html>

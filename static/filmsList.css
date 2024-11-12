@@ -1,0 +1,97 @@
+/* Style global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    color: #333;
+}
+
+/* Style du tableau */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: black;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #cccccc;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #cc0033;
+    text-decoration: underline;
+}
+
+/* Style du lien "Ajouter un film" */
+a.add-film {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    position: relative;
+    left: 36%;
+}
+
+a.add-film:hover {
+    background-color: #cc0033;
+}
+
+/* Conteneur pour le formulaire et le lien "Ajouter un film" */
+.form-container {
+    display: flex;
+    align-items: center; /* Aligner verticalement */
+    justify-content: space-between; /* Espacement égal entre les éléments */
+    margin-bottom: 20px; /* Espacement entre le formulaire et la table */
+}
+
+/* Style pour le formulaire de recherche */
+form {
+    display: flex;
+    align-items: center;
+}
+
+/* Style pour l'input et le bouton */
+form input {
+    padding: 8px;
+    margin-right: 10px; /* Espacement entre l'input et le bouton */
+}
+
+form button {
+    padding: 8px 12px;
+}
+
+
+
